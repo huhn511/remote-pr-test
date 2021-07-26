@@ -1,0 +1,31 @@
+name: push to wiki
+on:
+  push:
+    branches:
+      - main
+jobs:      
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: checkout specifications
+        uses: actions/checkout@v2
+        with:
+          repository: huhn511/iota-wiki
+          path: ${{ github.repository }}
+      - name: git config
+        run: |
+          git config --global user.name "${{ github.event.pusher.name }}"
+          git config --global user.email "${{ github.event.pusher.email }}"
+      - name: create pull request for updated docs
+        uses: tauri-apps/create-pull-request@v2.8.0
+        with:
+          token: ${{ secrets.IOTA_BOT_PAT }}
+          commit-message: "chore(docs): Update ${{ github.repository }} docs"
+          branch: main
+          path: ${{ github.repository }}
+          title: Update Docs for ${{ github.repository }}
+          labels: "spec update"
+          body: |
+            These are the updated docs from the most recent release of ${{ github.repository }}.
