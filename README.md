@@ -1,4 +1,4 @@
 # remote-pr-test
 
-Test to create a PR in a external repostiorey
+Test to create a PR in a external repository.
 
