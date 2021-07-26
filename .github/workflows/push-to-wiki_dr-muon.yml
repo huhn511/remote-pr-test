@@ -33,3 +33,4 @@ jobs:
           branch: docs/update-${{ github.repository }}
           delete-branch: true
           title: Update docs
+          push-to-fork: huhn511/iota-wiki
