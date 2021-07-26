@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: huhn511/iota-wiki
+          repository: iota-community/iota-wiki
           path: iota-wiki
       - name: Copy docs
         run: |
