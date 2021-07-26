@@ -21,13 +21,6 @@ jobs:
           ls
           git clone https://github.com/${{ github.repository }} --single-branch --branch main
           ls
-          DIR="iota-wiki/docs/develop/bee"
-          if [ -d "$DIR" ]; then
-            rm -r $DIR
-          fi
-          cp -r bee/documentation/docs iota-wiki/docs/develop/bee
-          rm -r iota-wiki/docs/develop/bee/contribute
-          rm iota-wiki/docs/develop/bee/welcome.md
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
