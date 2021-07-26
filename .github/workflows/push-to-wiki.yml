@@ -19,7 +19,7 @@ jobs:
           git config --global user.name "${{ github.event.pusher.name }}"
           git config --global user.email "${{ github.event.pusher.email }}"
       - name: create pull request for updated docs
-        uses: tauri-apps/create-pull-request@v2.8.0
+        uses: iotaledger/actions-gh-pages@v3
         with:
           token: ${{ secrets.IOTA_BOT_PAT }}
           commit-message: "chore(docs): Update ${{ github.repository }} docs"
