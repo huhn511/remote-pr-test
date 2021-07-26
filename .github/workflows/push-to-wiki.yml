@@ -22,10 +22,11 @@ jobs:
         uses: iotaledger/actions-gh-pages@v3
         with:
           # token: ${{ secrets.IOTA_BOT_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(docs): Update ${{ github.repository }} docs"
           branch: main
           path: ${{ github.repository }}
           title: Update Docs for ${{ github.repository }}
-          labels: "spec update"
+          labels: "docs update"
           body: |
             These are the updated docs from the most recent release of ${{ github.repository }}.
