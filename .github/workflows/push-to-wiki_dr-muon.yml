@@ -1,0 +1,38 @@
+name: push-docs
+
+on:
+  push:
+    branches:
+      - main
+    # paths:
+      # - documentation/docs/**
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: huhn511/iota-wiki
+          path: iota-wiki
+      - name: Copy docs
+        run: |
+          echo "Print dir content"
+          ls
+          git clone https://github.com/${{ github.repository }} --single-branch --branch dev
+          ls
+          DIR="iota-wiki/docs/develop/bee"
+          if [ -d "$DIR" ]; then
+            rm -r $DIR
+          fi
+          cp -r bee/documentation/docs iota-wiki/docs/develop/bee
+          rm -r iota-wiki/docs/develop/bee/contribute
+          rm iota-wiki/docs/develop/bee/welcome.md
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: iota-wiki
+          commit-message: Update ${{ github.repository }} docs
+          branch: docs/update-${{ github.repository }}
+          delete-branch: true
+          title: Update docs
