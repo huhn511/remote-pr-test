@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "Print dir content"
           ls
-          git clone https://github.com/${{ github.repository }} --single-branch --branch dev
+          git clone https://github.com/${{ github.repository }} --single-branch --branch main
           ls
           DIR="iota-wiki/docs/develop/bee"
           if [ -d "$DIR" ]; then
