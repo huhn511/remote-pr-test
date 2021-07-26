@@ -21,7 +21,7 @@ jobs:
       - name: create pull request for updated docs
         uses: iotaledger/actions-gh-pages@v3
         with:
-          token: ${{ secrets.IOTA_BOT_PAT }}
+          # token: ${{ secrets.IOTA_BOT_PAT }}
           commit-message: "chore(docs): Update ${{ github.repository }} docs"
           branch: main
           path: ${{ github.repository }}
