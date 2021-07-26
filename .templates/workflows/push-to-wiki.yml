@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
-      - name: checkout specifications
+      - name: checkout wiki
         uses: actions/checkout@v2
         with:
           repository: huhn511/iota-wiki
