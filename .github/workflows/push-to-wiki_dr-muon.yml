@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: iota-community/iota-wiki
+          repository: huhn511/iota-wiki
           path: iota-wiki
       - name: Copy docs
         run: |
@@ -27,10 +27,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }} 
           path: iota-wiki
           commit-message: Update ${{ github.repository }} docs
           branch: docs/update-${{ github.repository }}
           delete-branch: true
           title: Update docs
-          push-to-fork: huhn511/iota-wiki
